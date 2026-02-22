@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXISITERS® | Official Store | Premium Mobile Accessories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Outfit:wght@700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: #e5e5e5;
+            overflow-x: hidden;
+        }
+
+        .brand-font { font-family: 'Outfit', sans-serif; font-weight: 900; }
+
+        /* ADVANCED LIQUID METAL & COLOR FLOW ANIMATION */
+        @keyframes liquidFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(37, 211, 102, 0.4)); }
+            25% { filter: drop-shadow(0 0 25px rgba(59, 130, 246, 0.5)); }
+            50% { filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.4)); }
+            75% { filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.5)); }
+        }
+
+        .brand-logo-animated {
+            background: linear-gradient(to right, #ffffff, #25D366, #3b82f6, #a855f7, #fbbf24, #ffffff);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: liquidFlow 6s linear infinite, neonPulse 8s infinite ease-in-out;
+            display: inline-block;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+        }
+
+        .premium-card {
+            background: #0a0a0a;
+            border: 1px solid #262626;
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-8px);
+            border-color: #25D366;
+            box-shadow: 0 10px 40px -10px rgba(37, 211, 102, 0.15);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(to right, #FFE580, #BFA15F, #FFE580);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cod-shimmer {
+            background: rgba(37, 211, 102, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(37, 211, 102, 0.2);
+        }
+
+        .nav-pill {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+            cursor: pointer;
+            color: #737373;
+            font-weight: 500;
+        }
+        
+        .nav-link.active {
+            color: #25D366;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(37, 211, 102, 0.4);
+        }
+
+        .page-section { display: none; }
+        .page-section.active { display: block; animation: fadeIn 0.6s ease-out; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .tech-badge {
+            background: #111;
+            border: 1px solid #333;
+            padding: 6px 16px;
+            border-radius: 99px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        .btn-neon {
+            background: transparent;
+            border: 1px solid #25D366;
+            color: #25D366;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-neon:hover {
+            background: #25D366;
+            color: #000;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .partner-logo {
+            transition: all 0.3s ease;
+            filter: grayscale(1) opacity(0.7);
+        }
+        .partner-logo:hover {
+            filter: grayscale(0) opacity(1);
+            transform: scale(1.05);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            background: #000;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #activity-toast {
+            position: fixed;
+            bottom: 110px;
+            left: 20px;
+            background: rgba(10, 10, 10, 0.9);
+            border: 1px solid #25D366;
+            padding: 12px 20px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateY(200px);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+        #activity-toast.show { transform: translateY(0); }
+
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: black;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        .wa-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(37, 211, 102, 0.8);
+        }
+
+        .countdown-box {
+            background: #111;
+            border: 1px solid #333;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="activity-toast">
+        <div class="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></div>
+        <div class="text-[11px] font-bold text-gray-300">
+            <span id="activity-user" class="text-white">Sameer from Delhi</span> <span class="opacity-60">just ordered</span> <span id="activity-prod" class="text-[#25D366]">iPhone 16 Pro Ring</span>
+        </div>
+    </div>
+
+    <a href="https://wa.me/919963689076" target="_blank" class="wa-float">
+        <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <div class="bg-[#25D366] text-black py-2 overflow-hidden z-[110] relative border-b border-black/10">
+        <div class="whitespace-nowrap overflow-hidden">
+            <div class="marquee-content font-bold text-xs uppercase tracking-[0.2em] flex items-center">
+                ⚠️ HURRY UP! LIMITED STOCK AVAILABLE • FLASH SALE LIVE • ENDING SOON • FAST DELIVERY ALL OVER INDIA • SAME DAY DISPATCH • ⚠️ HURRY UP! LIMITED STOCK AVAILABLE • FLASH SALE LIVE • ENDING SOON • FAST DELIVERY ALL OVER INDIA • SAME DAY DISPATCH •
+            </div>
+        </div>
+    </div>
+
+    <nav class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[100] nav-pill px-8 py-4 rounded-full flex gap-8 items-center shadow-[0_10px_40px_rgba(0,0,0,0.8)]">
+        <span onclick="showPage('home')" class="nav-link active text-xs md:text-sm uppercase tracking-widest" id="nav-home">Store</span>
+        <span onclick="showPage('track')" class="nav-link text-xs md:text-sm uppercase tracking-widest" id="nav-track">Track</span>
+        <span onclick="showPage('contact')" class="nav-link text-xs md:text-sm uppercase tracking-widest" id="nav-contact">Contact</span>
+    </nav>
+
+    <header class="py-24 px-4 text-center border-b border-white/5 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-[300px] h-[300px] bg-green-500/5 blur-[120px] rounded-full -z-10"></div>
+        <div class="absolute top-1/2 right-1/4 -translate-y-1/2 w-[300px] h-[300px] bg-blue-500/5 blur-[120px] rounded-full -z-10"></div>
+        
+        <h1 class="text-7xl md:text-[10rem] font-black tracking-tighter mb-2 brand-font brand-logo-animated">
+            EXISITERS<span class="text-3xl md:text-6xl align-top opacity-90">&reg;</span>
+        </h1>
+        
+        <div class="flex items-center justify-center gap-4 mb-6">
+            <div class="h-px w-8 bg-white/20"></div>
+            <p class="text-xs md:text-lg font-black tracking-[0.3em] text-white/60 uppercase brand-font">Premium Mobile Accessories</p>
+            <div class="h-px w-8 bg-white/20"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 mb-6 text-center">
+            <p class="text-sm md:text-xl font-bold text-[#25D366] tracking-wide uppercase brand-font">
+                Elite Screen & Lens Defense — Secure your device before it’s too late.
+            </p>
+        </div>
+
+        <div class="mb-10 text-center">
+            <span class="bg-white/5 border border-white/10 px-6 py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-gray-400">
+                <span class="text-[#25D366] mr-2">●</span> Fast Delivery All Over India
+            </span>
+        </div>
+        
+        <div class="mt-8 flex flex-col items-center gap-4">
+            <p class="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-[#25D366] animate-pulse">Exclusively Available on</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12 bg-white/5 px-10 py-6 rounded-full border border-white/10 backdrop-blur-xl shadow-2xl">
+                <div class="partner-logo flex items-center gap-1.5 h-6 md:h-8">
+                    <span class="text-xl md:text-2xl font-bold italic text-[#2874f0]">Flipkart</span>
+                    <div class="w-2 h-2 rounded-full bg-[#ff9f00]"></div>
+                </div>
+                <div class="w-px h-6 bg-white/10 hidden md:block"></div>
+                <div class="partner-logo flex flex-col items-center relative h-6 md:h-8 pt-1">
+                    <span class="text-xl md:text-2xl font-black text-white tracking-tight leading-none">amazon</span>
+                    <svg class="w-full h-3 text-[#ff9900] absolute -bottom-1" viewBox="0 0 100 20" fill="none" stroke="currentColor" stroke-width="4">
+                        <path d="M10 5 Q 50 20 90 5" stroke-linecap="round" />
+                    </svg>
+                </div>
+                <div class="w-px h-6 bg-white/10 hidden md:block"></div>
+                <div class="partner-logo flex items-center h-6 md:h-8">
+                    <span class="text-xl md:text-2xl font-black text-[#f43397] tracking-tighter">meesho</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="max-w-5xl mx-auto px-6 py-12">
+        <div class="premium-card p-8 bg-gradient-to-br from-[#111] to-black border-[#25D366]/30 overflow-hidden relative">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-[#25D366]/10 blur-[80px] rounded-full"></div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-between gap-10 relative z-10">
+                <div class="text-center md:text-left">
+                    <span class="bg-[#25D366] text-black px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest mb-4 inline-block">Flash Sale Offer</span>
+                    <h2 class="text-4xl md:text-5xl font-black brand-font uppercase italic tracking-tighter mb-2 text-white">Combo Bundle Deal</h2>
+                    <p class="text-[#25D366] text-[10px] font-black uppercase tracking-[0.2em] mb-4">⚠️ HURRY UP! LIMITED STOCK AVAILABLE</p>
+                    <p class="text-gray-400 text-sm max-w-md">Get your Premium Combo! Includes **1 Premium Lens Protector Set + 1 Screen Guard**. Limited to first 50 customers today.</p>
+                </div>
+
+                <div class="flex flex-col items-center gap-4">
+                    <div class="flex gap-2">
+                        <div class="countdown-box"><span id="timer-h" class="text-xl font-black text-[#25D366]">02</span><span class="text-[8px] uppercase text-gray-500">Hrs</span></div>
+                        <div class="countdown-box"><span id="timer-m" class="text-xl font-black text-[#25D366]">45</span><span class="text-[8px] uppercase text-gray-500">Min</span></div>
+                        <div class="countdown-box"><span id="timer-s" class="text-xl font-black text-[#25D366]">00</span><span class="text-[8px] uppercase text-gray-500">Sec</span></div>
+                    </div>
+                    <div class="w-full">
+                        <div class="flex justify-between text-[10px] font-bold uppercase mb-1">
+                            <span class="text-[#25D366]">Elite Stock Status</span>
+                            <span class="text-gray-500">85% Claimed</span>
+                        </div>
+                        <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                            <div class="w-[85%] h-full bg-[#25D366] rounded-full animate-pulse"></div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/919963689076?text=Hi EXISITERS® Team, I want to claim the Combo Bundle (Lens Protector + Screen Guard) for ₹399." target="_blank" class="w-full btn-neon py-3 rounded-xl font-black text-[11px] uppercase tracking-widest text-center shadow-lg shadow-[#25D366]/20">Claim for ₹399 Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cod-shimmer py-3 px-4 text-center sticky top-0 z-50">
+        <p class="text-xs md:text-sm font-medium text-[#25D366]">
+            <span class="bg-[#25D366] text-black px-2 py-0.5 rounded text-[10px] font-black mr-2 uppercase tracking-wide">Nationwide Shipping</span> 
+            <span class="text-white font-bold">Pay</span> ₹99 Token to Confirm <span class="text-white font-bold">•</span> Delivery All Over India
+        </p>
+    </div>
+
+    <main id="page-home" class="page-section active max-w-7xl mx-auto px-6 py-20">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-black mb-6 uppercase italic tracking-tighter text-white brand-font">Elite Device Protection</h2>
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-3 mb-16">
+            <button onclick="filterProducts('all')" id="btn-all" class="px-6 py-3 rounded-xl border border-white/10 bg-[#111] text-[11px] font-bold uppercase tracking-widest hover:border-[#25D366] hover:text-white text-gray-500 transition-all">All</button>
+            <button onclick="filterProducts('combo')" id="btn-combo" class="px-6 py-3 rounded-xl border border-[#FFE580] bg-[#FFE580]/10 text-[11px] font-black uppercase tracking-widest hover:text-white text-[#FFE580] transition-all">🔥 Combos (Lens + Screen)</button>
+            <button onclick="filterProducts('iphone')" id="btn-iphone" class="px-6 py-3 rounded-xl border border-white/10 bg-[#111] text-[11px] font-bold uppercase tracking-widest hover:border-[#25D366] hover:text-white text-gray-500 transition-all">iPhone</button>
+            <button onclick="filterProducts('android')" id="btn-android" class="px-6 py-3 rounded-xl border border-white/10 bg-[#111] text-[11px] font-bold uppercase tracking-widest hover:border-[#25D366] hover:text-white text-gray-500 transition-all">Android</button>
+            <button onclick="filterProducts('screen')" id="btn-screen" class="px-6 py-3 rounded-xl border border-white/10 bg-[#111] text-[11px] font-bold uppercase tracking-widest hover:border-[#25D366] hover:text-white text-gray-500 transition-all">Screen Guards</button>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"></div>
+
+        <section class="mt-40 border-t border-white/5 pt-24">
+            <div class="text-center mb-20">
+                <h2 class="text-5xl md:text-7xl font-black mb-4 uppercase brand-font gold-gradient-text tracking-tighter">Installation Guide</h2>
+                <p class="text-[#25D366] text-xs md:text-lg font-bold uppercase tracking-[0.4em]">Master the perfect fit with EXISITERS®</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div class="premium-card p-5 group">
+                    <div class="video-container mb-6 shadow-2xl">
+                        <iframe src="https://www.youtube.com/embed/ScMzIraS_kE" title="Camera Ring Guide" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="px-2">
+                        <h3 class="text-2xl font-black text-white brand-font uppercase tracking-tighter mb-2">Camera Protector</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Expert guidance on aligning standard diamond-cut protector rings for a factory-finish look.</p>
+                        <a href="https://www.youtube.com/watch?v=ScMzIraS_kE" target="_blank" class="w-full btn-neon py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest block text-center">Watch Full Tutorial</a>
+                    </div>
+                </div>
+                <div class="premium-card p-5 group">
+                    <div class="video-container mb-6 shadow-2xl">
+                        <iframe src="https://www.youtube.com/embed/Y-7C69CjHLo" title="Diamond Edition Guide" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="px-2">
+                        <h3 class="text-2xl font-black text-white brand-font uppercase tracking-tighter mb-2">Diamond Edition</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Professional techniques for applying luxury diamond edition camera rings with 3M precision.</p>
+                        <a href="https://www.youtube.com/watch?v=Y-7C69CjHLo" target="_blank" class="w-full btn-neon py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest block text-center">Watch Full Tutorial</a>
+                    </div>
+                </div>
+                <div class="premium-card p-5 group">
+                    <div class="video-container mb-6 shadow-2xl">
+                        <iframe src="https://www.youtube.com/embed/mDMT-y-XN_I" title="Screen Guard Guide" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="px-2">
+                        <h3 class="text-2xl font-black text-white brand-font uppercase tracking-tighter mb-2">9H Screen Guard</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-6">Master the bubble-free installation of our 11D Super HD Sapphire Glass screen protectors.</p>
+                        <a href="https://www.youtube.com/watch?v=mDMT-y-XN_I" target="_blank" class="w-full btn-neon py-3 rounded-xl font-bold text-[10px] uppercase tracking-widest block text-center">Watch Full Tutorial</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-20 p-8 rounded-3xl bg-[#25D366]/5 border border-[#25D366]/10 text-center max-w-3xl mx-auto">
+                <p class="text-white font-bold text-lg mb-4">Find difficulty in installation, kindly speak with us</p>
+                <a href="https://wa.me/919963689076?text=Hi EXISITERS® Team, I am finding difficulty in installation. Can you help?" target="_blank" class="btn-neon px-8 py-4 rounded-xl font-black text-xs uppercase tracking-widest inline-flex items-center gap-3">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp Support
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <main id="page-track" class="page-section max-w-2xl mx-auto px-6 py-32">
+        <div class="premium-card p-10 text-center border-white/10">
+            <h2 class="text-3xl md:text-4xl font-black mb-6 gold-gradient-text uppercase brand-font tracking-tighter text-white">Track Order</h2>
+            <p class="text-gray-400 mb-10 text-sm">Enter your Order ID to receive a live status update via WhatsApp.</p>
+            <div class="space-y-4">
+                <input type="text" id="track-id" placeholder="EX-12345" class="w-full bg-black border border-white/20 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-[#25D366] transition-all placeholder-gray-700">
+                <button onclick="trackOrder()" class="w-full btn-neon py-4 rounded-xl font-bold text-sm uppercase tracking-widest">Request Status</button>
+            </div>
+        </div>
+    </main>
+
+    <main id="page-contact" class="page-section max-w-5xl mx-auto px-6 py-32">
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="premium-card p-10">
+                <h2 class="text-2xl md:text-3xl font-bold mb-8 text-[#25D366] uppercase brand-font">Official Support</h2>
+                <div class="space-y-6 text-sm">
+                    <p><span class="text-gray-500 font-bold uppercase tracking-widest text-[10px] block mb-1">Warehouse</span> Hyderabad, Telangana - 500064</p>
+                    <p><span class="text-gray-500 font-bold uppercase tracking-widest text-[10px] block mb-1">WhatsApp</span> +91 9963689076</p>
+                    <p><span class="text-gray-500 font-bold uppercase tracking-widest text-[10px] block mb-1">Email</span> ninitraders123@gmail.com</p>
+                </div>
+            </div>
+            <div class="premium-card p-10">
+                <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-gray-400">Wholesale & Business</h3>
+                <p class="text-gray-400 text-sm mb-8 leading-relaxed">Join the EXISITERS® network. We offer exclusive dealership opportunities across all states in India.</p>
+                <a href="https://wa.me/919963689076?text=Hi EXISITERS® Official, I am interested in bulk wholesale." target="_blank" class="block w-full btn-neon text-center py-4 rounded-xl font-bold text-xs uppercase tracking-widest">Bulk Inquiry</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-black border-t border-white/5 pt-20 pb-32">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h3 class="text-3xl font-black gold-gradient-text uppercase brand-font tracking-tighter mb-4">EXISITERS&reg;</h3>
+            <p class="text-gray-500 text-sm leading-relaxed max-w-md mx-auto mb-8">
+                Based in Hyderabad since 2022, EXISITERS® is India's pioneer in luxury device armor. 
+                <br><span class="text-[#25D366] text-xs font-bold uppercase tracking-widest">Delivering Pan-India</span>
+            </p>
+            <div class="text-[10px] text-gray-700 uppercase tracking-widest">
+                &copy; 2026 EXISITERS® | ALL RIGHTS RESERVED
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(p => p.classList.remove('active'));
+            document.getElementById('page-' + pageId).classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.getElementById('nav-' + pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function trackOrder() {
+            const id = document.getElementById('track-id').value;
+            if(!id) return;
+            window.open(`https://wa.me/919963689076?text=Hi EXISITERS® Official, I want to track my order ID: ${encodeURIComponent(id)}`, '_blank');
+        }
+
+        // GLOBAL SLIDE FUNCTION
+        function slide(btn, direction) {
+            const container = direction === 'next' ? btn.nextElementSibling : btn.previousElementSibling;
+            const scrollAmount = container.offsetWidth;
+            container.scrollBy({
+                left: direction === 'next' ? -scrollAmount : scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        let time = 9900;
+        setInterval(() => {
+            if(time <= 0) return;
+            time--;
+            const h = Math.floor(time / 3600);
+            const m = Math.floor((time % 3600) / 60);
+            const s = time % 60;
+            document.getElementById('timer-h').innerText = String(h).padStart(2, '0');
+            document.getElementById('timer-m').innerText = String(m).padStart(2, '0');
+            document.getElementById('timer-s').innerText = String(s).padStart(2, '0');
+        }, 1000);
+
+        const users = ["Rahul from Mumbai", "Anjali from Bangalore", "Vikram from Hyderabad", "Sneha from Pune", "Karan from Chennai"];
+        const products_list = ["iPhone 16 Pro Ring", "Privacy Screen Guard", "Vivo V29 Armor", "Super X Tempered", "S24 Ultra Lens"];
+        
+        function showToast() {
+            const toast = document.getElementById('activity-toast');
+            document.getElementById('activity-user').innerText = users[Math.floor(Math.random() * users.length)];
+            document.getElementById('activity-prod').innerText = products_list[Math.floor(Math.random() * products_list.length)];
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 4000);
+        }
+        setInterval(showToast, 12000);
+
+        const screenGuardGallery = [
+            "https://i.postimg.cc/d1yNppj0/super-X-tempered-glass.png",
+            "https://i.postimg.cc/xTt5x9VP/UV-Glass.png",
+            "https://i.postimg.cc/1RWVbX4Z/Membrane.png",
+            "https://i.postimg.cc/PJC9XNHk/Iphone-Privac-3.jpg",
+            "https://i.postimg.cc/3wSHYsGD/PG2.jpg",
+            "https://i.postimg.cc/hPWRDbJn/matte-glass.jpg",
+            "https://i.postimg.cc/W44QW5yp/Iphone-11D.jpg"
+        ];
+
+        const products = [
+            { name: "iPhone Pro Full Armor Combo", category: "combo", type: "1 Lens Protector Set + 1 Premium Screen Guard", price: 399, urgency: "Best Value", image: "https://i.postimg.cc/W44QW5yp/Iphone-11D.jpg" },
+            { name: "Samsung Ultra Elite Armor Combo", category: "combo", type: "1 Lens Protector Set + 1 UV Screen Guard", price: 399, urgency: "Highly Rated", image: "https://i.postimg.cc/cL6Qbj58/Z-fold-7-black-camera-lens-protector.png" },
+            { name: "Vivo V29 Ultimate Armor Combo", category: "combo", type: "1 Lens Protector Set + 1 Premium Screen Guard", price: 399, urgency: "Perfect Match", image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "Universal Android Defense Combo", category: "combo", type: "1 Lens Protector Set + 1 Screen Guard (Any Model)", price: 399, urgency: "Universal Fit", image: "https://i.postimg.cc/d1yNppj0/super-X-tempered-glass.png" },
+
+            { name: "iPhone 11 to 17 Pro Max Camera Lens Protector Rings", category: "iphone", type: "Standard Diamond Cut", price: 149, urgency: "Selling Fast!", image: [ "https://i.postimg.cc/4dx4WbnP/Iphone-13-silver-1.png", "https://i.postimg.cc/pXfTXTNg/iphone-13-black-1.png", "https://i.postimg.cc/Vsjg1qNZ/11-Pro-max-Golden-3Rings-1.png", "https://i.postimg.cc/SNcxgKDn/Iphone-13-Blue-1.png", "https://i.postimg.cc/CxY6WFVg/Iphone-14-Seara-Blue-2Rings-1.png", "https://i.postimg.cc/3xpmC7vQ/iphone-13-red-1.png", "https://i.postimg.cc/0NRh5pSt/Iphone-15-pink-2rings.png", "https://i.postimg.cc/WbdyM96K/Iphone-15-light-green-1-pcs.png", "https://i.postimg.cc/fRcQ92D6/Iphone-13-Green-2rings.png", "https://i.postimg.cc/c1vqm4dh/Multicolour-15.png", "https://i.postimg.cc/tCnr1spw/Purple-14-1.png" ] },
+            { name: "iPhone 11 to 17 Pro Max Diamond Camera Lens Protector Rings", category: "iphone", type: "Premium Diamond Finish", price: 169, urgency: "High Demand", image: [ "https://i.postimg.cc/k4z7c2ZF/Iphone-13-multoclour-diamond-2-rings.png", "https://i.postimg.cc/pVjvvX3M/iphone-2-pcs-silver-diamond.png", "https://i.postimg.cc/IP-15-Golden-diamond-camera-rings-1.png", "https://i.postimg.cc/BZTzN8dF/IP-15-Pink-diamond-1.png", "https://i.postimg.cc/K8zsZ04f/Blue-diamond-2-rings.png", "https://i.postimg.cc/rm6hNcjZ/golden-3-rings-1.png", "https://i.postimg.cc/5N9s3sBZ/Iphone-13-black-diamond-1.png", "https://i.postimg.cc/ydXThRkg/Iphone-13-pink-diamond-1.png", "https://i.postimg.cc/XvNFMPJM/Iphone-14-Pro-max-Diamond-Dark-Purple.png" ] },
+            { name: "All Samsung Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, urgency: "Limited Stock", image: [ "https://i.postimg.cc/PrWcqLtK/S25-Ultra-Black.png", "https://i.postimg.cc/wBZF2Hqz/ultra-series-silver-1.png", "https://i.postimg.cc/cL6Qbj58/Z-fold-7-black-camera-lens-protector.png" ] },
+            { name: "Vivo V29 Series Elite Camera Armor", category: "android", type: "Precision 9H Glass", price: 149, urgency: "Trending", image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All OnePlus Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, urgency: "Only 12 Left", image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All Google Pixel Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All Motorola Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All Vivo Other Models Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All Oppo Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All Realme Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All Xiaomi/Redmi Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All iQOO Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All Poco Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All Infinix/Techno Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All Nothing Phone Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            { name: "All Other Android Models Camera Lens Protectors", category: "android", type: "Premium Lens Guard", price: 149, image: "https://i.postimg.cc/ZqYP2BGf/iphone-11-Pro-max-silver-3rings-2.png" },
+            
+            { name: "iPhone All Models Premium Screen Guard", category: "screen", type: "Privacy / Matte / 11D / Super X", price: 299, urgency: "Bulk Deal", image: screenGuardGallery },
+            { name: "Samsung All Models Premium Screen Guard", category: "screen", type: "Curved UV / 9H Glass", price: 299, urgency: "Fast Moving", image: screenGuardGallery },
+            { name: "OnePlus All Models Premium Screen Guard", category: "screen", type: "Curved UV / 9H Glass", price: 299, image: screenGuardGallery },
+            { name: "Google Pixel All Models Premium Screen Guard", category: "screen", type: "Curved UV / 9H Glass", price: 299, image: screenGuardGallery },
+            { name: "Motorola All Models Premium Screen Guard", category: "screen", type: "Edge-to-Edge Protection", price: 299, image: screenGuardGallery },
+            { name: "Vivo All Models Premium Screen Guard", category: "screen", type: "High Definition Glass", price: 299, image: screenGuardGallery },
+            { name: "Oppo All Models Premium Screen Guard", category: "screen", type: "9H Hardness Glass", price: 299, image: screenGuardGallery },
+            { name: "Realme All Models Premium Screen Guard", category: "screen", type: "Crystal Clear Glass", price: 299, image: screenGuardGallery },
+            { name: "Xiaomi/Redmi All Models Screen Guard", category: "screen", type: "Crystal Clear Glass", price: 299, image: screenGuardGallery },
+            { name: "iQOO/Poco All Models Premium Screen Guard", category: "screen", type: "Ultra Defense Glass", price: 299, image: screenGuardGallery },
+            { name: "All Other Brands Premium Screen Guard", category: "screen", type: "Universal 9H Glass", price: 299, image: screenGuardGallery }
+        ];
+
+        const grid = document.getElementById('product-grid');
+
+        function renderProducts(filter = 'all') {
+            grid.innerHTML = '';
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            
+            filtered.forEach(p => {
+                const isCombo = p.category === 'combo';
+                const isRing = p.category === 'iphone' || p.category === 'android';
+                const unitPrice = p.price; 
+                
+                let mrp;
+                if(isCombo) mrp = 499;
+                else mrp = unitPrice < 200 ? 899 : 1299;
+
+                const badgeText = isCombo ? "ELITE COMBO" : (isRing ? "MIN QTY 2" : "SINGLE PACK");
+                const subtext = isCombo ? "Special Bundle Price" : (isRing ? `Min Qty 2 (Total ₹${unitPrice * 2})` : "Premium Single Unit");
+                
+                const card = document.createElement('div');
+                card.className = "premium-card p-6 flex flex-col items-center group";
+                
+                const waLink = `https://wa.me/919963689076?text=Hi EXISITERS® Team! I want to order the Elite Combo for ${encodeURIComponent(p.name)} (₹${unitPrice}). This includes the Lens Protector + Screen Guard. I will pay the ₹99 token now.`;
+
+                let imageContent;
+                let images = Array.isArray(p.image) ? p.image : [p.image];
+                const fallbackAttr = `onerror="this.onerror=null; this.src='https://placehold.co/600x600/0a0a0a/25D366?text=EXISITERS+ELITE'"`;
+
+                if (images.length > 1) {
+                    const slidesHtml = images.map(img => `<img src="${img}" ${fallbackAttr} class="w-full h-full object-cover flex-shrink-0 snap-center transition-transform duration-500">`).join('');
+                    let indicators = `<div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10 bg-black/40 px-2 py-1 rounded-full backdrop-blur-sm pointer-events-none">${images.map(() => `<div class="w-1.5 h-1.5 rounded-full bg-white/70"></div>`).join('')}</div>`;
+                    
+                    imageContent = `
+                        <div class="relative w-full h-full group/slider">
+                            <button onclick="slide(this, 'next')" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/80 text-white p-2 rounded-full z-30 hover:bg-[#25D366] hover:text-black transition-all border border-white/10 flex items-center justify-center">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            </button>
+                            <div class="w-full h-full flex overflow-x-auto snap-x snap-mandatory hide-scrollbar relative z-0 scroll-smooth">
+                                ${slidesHtml}
+                            </div>
+                            <button onclick="slide(this, 'prev')" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/80 text-white p-2 rounded-full z-30 hover:bg-[#25D366] hover:text-black transition-all border border-white/10 flex items-center justify-center">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                            ${indicators}
+                        </div>`;
+                } else {
+                    imageContent = `<img src="${images[0]}" ${fallbackAttr} alt="${p.name}" class="w-full h-full object-cover">`;
+                }
+
+                card.innerHTML = `
+                    <div class="w-full aspect-square bg-[#111] rounded-[1.5rem] mb-6 flex items-center justify-center relative overflow-hidden border border-white/5">
+                        ${imageContent}
+                        <div class="absolute top-4 right-4 bg-black/80 px-3 py-1 rounded-full border border-[#25D366]/30 z-20">
+                            <span class="text-[9px] font-black text-[#25D366] uppercase tracking-wider">${badgeText}</span>
+                        </div>
+                        ${p.urgency ? `<div class="absolute bottom-4 left-4 bg-[#25D366] px-2 py-0.5 rounded text-[8px] font-black text-black uppercase tracking-tighter z-20 animate-pulse">${p.urgency}</div>` : ''}
+                    </div>
+                    <div class="text-center w-full">
+                        <h4 class="text-lg font-bold mb-2 group-hover:text-[#25D366] transition-colors line-clamp-2 min-h-[3.5rem] text-white leading-tight">${p.name}</h4>
+                        <p class="text-[10px] text-gray-500 mb-6 uppercase tracking-widest font-bold">${p.type}</p>
+                        <div class="mb-8 p-3 bg-white/5 rounded-xl border border-white/5">
+                            <div class="flex items-baseline justify-center gap-2 mb-1">
+                                <span class="text-2xl font-black text-white">₹${unitPrice}</span>
+                                <span class="text-[10px] text-gray-500 line-through">₹${mrp}</span>
+                            </div>
+                            <p class="text-[10px] text-[#25D366] font-bold uppercase tracking-wide">${subtext}</p>
+                        </div>
+                        <a href="${waLink}" target="_blank" class="w-full btn-neon py-4 rounded-xl font-bold text-xs uppercase tracking-widest block text-center">${isCombo ? 'Order Combo Now' : 'Order Now'}</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterProducts(category) {
+            renderProducts(category);
+            document.querySelectorAll('[id^="btn-"]').forEach(b => {
+                b.classList.remove('border-[#25D366]', 'text-white', 'bg-[#25D366]/10', 'border-[#FFE580]', 'text-[#FFE580]', 'bg-[#FFE580]/10');
+                b.classList.add('text-gray-500', 'bg-[#111]', 'border-white/10');
+            });
+            const activeBtn = document.getElementById('btn-' + category);
+            activeBtn.classList.remove('text-gray-500', 'bg-[#111]', 'border-white/10');
+            if(category === 'combo') {
+                activeBtn.classList.add('border-[#FFE580]', 'text-[#FFE580]', 'bg-[#FFE580]/10');
+            } else {
+                activeBtn.classList.add('border-[#25D366]', 'text-white', 'bg-[#25D366]/10');
+            }
+        }
+
+        renderProducts();
+        filterProducts('all');
+    </script>
+</body>
+</html>
